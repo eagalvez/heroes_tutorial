@@ -1,0 +1,21 @@
+<!--the component should only display the selected hero details if the selectedHero exists-->
+
+<!--the word uppercase on the interpolation binding, right after the pipe operator
+activates the built in Activate pipe-->
+<!--Pipes are a good way to format strings, currency amounts, 
+    dates and other display data. Angular ships with several built-in pipes and you can create your own-->
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!--The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.-->
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)"> <!-- queda marcado con el class.selected-->
+    <!--event binding, the parentheses around click tell Angular to listen the li-->
+    <!-- When the user clicks in the li, Angular executes onSelect(hero) expression-->
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <!--Binding expressions in the template that refer to properties of selectedHero—expressions 
+      like {{selectedHero.name}}—must fail because there is no selected hero.-->
+</ul>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- You used one way a property binding to give the parent 
+  HeroesComponent control over the child HeroDetailComponent-->
