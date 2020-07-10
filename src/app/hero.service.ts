@@ -38,4 +38,10 @@ export class HeroService {
   use the Angular HttpClient.get method to fetch
   the heroes and HttpClient.get() returns an Observable.
   */
+ getHero(id: number): Observable<Hero> {
+   this.messageService.add('Hero service: fetched hero id=${id}');
+   // Note the backticks ( ` ) that define a JavaScript template literal for embedding the id.
+   return of(HEROES.find(hero => hero.id === id))
+
+ }
 }

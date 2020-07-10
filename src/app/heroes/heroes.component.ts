@@ -2,25 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  heroes: Hero[];
+
   /* hero = 'Windstorm';
   hero: Hero = {
     id: 1,
     name: 'Windstorm'
   };
   */
+ /*
   selectedHero: Hero;
-  heroes: Hero[];
   // define a component property called heroes to expose the HEROES array for binding.
+*/
 
+constructor(
+  private route: ActivatedRoute,
+  private heroService: HeroService,
 
-  constructor(private heroService: HeroService,
-              private messageService: MessageService) { }
+) {}
 // The parameter simultaneously defines a private heroService 
 // property and identifies it as a HeroService injection site.
 
@@ -39,9 +47,12 @@ export class HeroesComponent implements OnInit {
   emitted array to the callback,
    which sets the component's heroes property.
   */
+ 
+  /*
   onSelect(hero: Hero): void{
     this.selectedHero = hero;
     this.messageService.add(`Heroes component: 
     Selected hero id=${hero.id}`);
   }
+  */
 }
