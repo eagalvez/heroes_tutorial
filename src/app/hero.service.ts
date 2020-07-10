@@ -8,6 +8,11 @@ import { MessageService } from './message.service';
 // in the dependency injection system
 @Injectable({ // accepts a metadata object for the service
   providedIn: 'root'
+  /*
+  You registered the HeroService as the provider of its
+  service at the root level so that it can be injected
+  anywhere in the app.
+  */
 })
 //  "service-in-service" scenario
 export class HeroService {
