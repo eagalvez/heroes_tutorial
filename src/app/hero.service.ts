@@ -3,27 +3,31 @@ import { HEROES } from './mock-heroes'; // The HeroService could get hero data f
 // web service, local storage, or a mock data source.
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
+import { MessageService } from './message.service';
 // This marks the class as one that participates
 // in the dependency injection system
 @Injectable({ // accepts a metadata object for the service
   providedIn: 'root'
 })
+//  "service-in-service" scenario
 export class HeroService {
-
-  constructor() { }
+/*Angular will inject the singleton MessageService
+ into that property when it creates the HeroService
+*/
+  constructor(private messageService: MessageService) { }
   /* The HeroService.getHeroes() method has a
     synchronous signature,which implies that
      the HeroService can fetch heroes synchronously.
-     In real app fetch heroes from a remote server, 
-     which is an inherently asynchronous operation.*/
+     In real app fetch heroes from a remote server,
+     which is an inherently asynchronous operation.
   getHeroes(): Hero[] {
     return HEROES;
   }
-  //*/
-  /*getHeroes(): Observable<Hero[]> {
+  */
+  getHeroes(): Observable<Hero[]> {
+    this.messageService.add('HeroService: fetched Heroes');
     return of(HEROES);
   }
-  */
   /*
   will return an Observable because it will eventually
   use the Angular HttpClient.get method to fetch
