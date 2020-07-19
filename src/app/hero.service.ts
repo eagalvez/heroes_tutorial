@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HEROES } from './mock-heroes'; // The HeroService could get hero data from anywhere—a 
+import { HEROES } from './mock-heroes'; // The HeroService could get hero data from anywhere—a
 // web service, local storage, or a mock data source.
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
@@ -39,9 +39,9 @@ export class HeroService {
   the heroes and HttpClient.get() returns an Observable.
   */
  getHero(id: number): Observable<Hero> {
-   this.messageService.add('Hero service: fetched hero id=${id}');
+   this.messageService.add(`Hero service: fetched hero id=${id}`);
    // Note the backticks ( ` ) that define a JavaScript template literal for embedding the id.
-   return of(HEROES.find(hero => hero.id === id))
+   return of(HEROES.find(hero => hero.id === id));
 
  }
 }

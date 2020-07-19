@@ -3,5 +3,6 @@
     <button class="clear"
         (click)="messageService.clear()">clear</button>
     <div *ngFor='let message of messageService.messages'> {{message}} </div>
-
+    <!-- angular event binding binds the button's click event
+    to MessageService.clear() -->
 </div>
